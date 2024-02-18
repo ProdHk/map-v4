@@ -3,47 +3,39 @@
 import { GetOneMapById } from "@/services/map"
 import { BuscarUsuarios } from "@/services/usuarios"
 import { mapTypes } from "@/types/mapTypes"
+import { userTypes } from "@/types/userTypes"
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
 
 export default function Handler() {
+
     const [ideia, setIdeia] = useState<mapTypes>()
     const [usuario, setUsuario] = useState('')
 
-    const { id } = useParams()
 
+    const { id } = useParams()
     useEffect(() => {
 
-        async function getIdeia({ id }: any) {
+        async function getIdeia({ id }: mapTypes) {
 
             try {
-                const ideia = await GetOneMapById({ id }).then(async ({ _id, estado, usuario, ideia, empresa, titulo,
-                    desc, envolvidos, dataCadastro, dataPontuacao, pontos, }: mapTypes) => {
-                    setIdeia<mapTypes>(
-                        _id, estado, usuario, ideia, empresa, titulo, desc,
-                        envolvidos, dataCadastro, dataPontuacao, pontos
-                    )
-                    try {
-                        const usuarios = await BuscarUsuarios()
-                        const username = usuarios.filter(({ _id }: any) => _id === usuario)
-                        setUsuario(username[0].nome)
-                    } catch (error) {
-                        console.log(error)
-                    }
+                const ideia = await GetOneMapById({ id })
+                setIdeia(ideia)
+                const uId = ideia?.usuario
+                const usuarios = await BuscarUsuarios()
+                const username = usuarios.filter(({ _id }: userTypes) => _id === uId)
+                setUsuario(username[0].nome)
 
-                })
-
-                return ideia
             } catch (error) {
                 console.log("erro ao buscar map", error)
             }
 
         }
 
+
         getIdeia({ id })
     }, [])
-
 
 
 
@@ -85,7 +77,7 @@ export default function Handler() {
                                 </div>
                                 <div className="flex flex-row gap-5  items-start justify-start">
                                     <label className="font-semibold">Pontos:</label>
-                                    <h4>{ideia?.pontos}</h4>
+                                    <h4>{ideia?.pontos.toString()}</h4>
                                 </div>
 
                                 <div className="flex flex-row gap-5  items-start justify-start">
@@ -123,3 +115,27 @@ export default function Handler() {
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* try {
+    const usuarios = await BuscarUsuarios()
+    const username = usuarios.filter(({ _id }: any) => _id === usuario)
+    console.log(username)
+   setUsuario(username[0].nome)
+    return {
+        _id, estado, usuario, ideia, empresa, titulo, desc,
+        envolvidos, dataCadastro, dataPontuacao, pontos
+    }
+} catch (error) {
+    console.log(error)
+} */
