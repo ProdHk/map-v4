@@ -9,7 +9,7 @@ import { useEffect, useState } from "react"
 
 export default function Handler() {
 
-    const [ideia, setIdeia] = useState({})
+    const [ideia, setIdeia] = useState<mapTypes>()
     const [usuario, setUsuario] = useState('')
 
     const { id } = useParams()

@@ -8,7 +8,7 @@ import { useEffect, useState } from "react"
 
 
 export default function Handler() {
-    const [ideia, setIdeia] = useState({})
+    const [ideia, setIdeia] = useState<mapTypes>()
     const [usuario, setUsuario] = useState('')
 
     const { id } = useParams()
@@ -20,7 +20,7 @@ export default function Handler() {
             try {
                 const ideia = await GetOneMapById({ id }).then(async ({ _id, estado, usuario, ideia, empresa, titulo,
                     desc, envolvidos, dataCadastro, dataPontuacao, pontos, }: mapTypes) => {
-                    setIdeia({
+                    setIdeia<mapTypes>({
                         _id, estado, usuario, ideia, empresa, titulo, desc,
                         envolvidos, dataCadastro, dataPontuacao, pontos
                     })
