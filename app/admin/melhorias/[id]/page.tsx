@@ -3,6 +3,7 @@
 import { GetOneMapById } from "@/services/map"
 import { BuscarUsuarios } from "@/services/usuarios"
 import { mapTypes } from "@/types/mapTypes"
+import { userTypes } from "@/types/userTypes"
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
@@ -10,32 +11,32 @@ import { useEffect, useState } from "react"
 export default function Handler() {
 
     const [ideia, setIdeia] = useState<mapTypes>()
-    const [usuario, setUsuario] = useState('')
+    const [usuario, setUsuario] = useState<userTypes | ''>('');
+
 
     const { id } = useParams()
-
     useEffect(() => {
-        async function getUsername(id: mapTypes) {
-            try {
-                const usuarios = await BuscarUsuarios()
-                const usuario = usuarios.filter(({ _id }: any) => _id === id)
-                setUsuario(usuario[0].nome)
-            } catch (error) {
-                console.log("erro por aquis")
-            }
 
-        }
-        async function getIdeia(id: mapTypes) {
+        async function getIdeia({ id }: any) {
+
             try {
                 const ideia = await GetOneMapById({ id })
                 setIdeia(ideia)
-                getUsername(ideia.usuario)
-            } catch (error) {
+                const uId = ideia?.usuario
+                const usuarios = await BuscarUsuarios()
+                const username = usuarios.filter(({ _id }: userTypes) => _id === uId)
+                setUsuario(username[0].nome)
 
+            } catch (error) {
+                console.log("erro ao buscar map", error)
             }
+
         }
-        getIdeia(id)
-    }, [])
+
+
+        getIdeia({ id })
+    })
+
 
 
     return (
@@ -56,7 +57,7 @@ export default function Handler() {
                                 {ideia?.titulo}
                             </h2>
                             <h4 className="text-lg  text-end mr-10 font-semibold p-5">
-                                {usuario}
+                                {usuario ? `${usuario}` : "Não informado"}
                             </h4>
                             <div className="flex flex-col gap-5">
 
@@ -76,7 +77,7 @@ export default function Handler() {
                                 </div>
                                 <div className="flex flex-row gap-5  items-start justify-start">
                                     <label className="font-semibold">Pontos:</label>
-                                    <h4>{ideia?.pontos}</h4>
+                                    <h4>{ideia ? `${ideia.pontos}` : ""}</h4>
                                 </div>
 
                                 <div className="flex flex-row gap-5  items-start justify-start">
