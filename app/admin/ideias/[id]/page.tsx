@@ -11,13 +11,13 @@ import { useEffect, useState } from "react"
 export default function Handler() {
 
     const [ideia, setIdeia] = useState<mapTypes>()
-    const [usuario, setUsuario] = useState('')
+    const [usuario, setUsuario] = useState<userTypes | ''>('');
 
 
     const { id } = useParams()
     useEffect(() => {
 
-        async function getIdeia({ id }: mapTypes) {
+        async function getIdeia({ id }: any) {
 
             try {
                 const ideia = await GetOneMapById({ id })
@@ -58,7 +58,8 @@ export default function Handler() {
                                 {ideia?.titulo}
                             </h2>
                             <h4 className="text-lg  text-end mr-10 font-semibold p-5">
-                                {usuario}                      </h4>
+                                {usuario ? `${usuario}` : null}
+                            </h4>
                             <div className="flex flex-col gap-5">
 
                                 <div className="flex flex-row gap-5  items-start justify-start">

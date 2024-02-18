@@ -1,6 +1,6 @@
 export type userTypes = {
 
-    id: String,
+    id: string | string[],
     _id: String,
     nome: String,
     tag: String,
