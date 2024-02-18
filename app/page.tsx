@@ -12,7 +12,7 @@ export default function Home() {
   const [pass, setPass] = useState('')
 
 
-  function logar({ email, pass }: userTypes) {
+  function logar({ email, pass }: any) {
 
     if (email === "admin") {
 
@@ -53,7 +53,7 @@ export default function Home() {
             <label>Senha</label>
             <Input placeholder="Digite aqui" type="password" onChange={(e) => setPass(e.target.value)} />
           </div>
-          <Button className="w-6/12 " onClick={() => logar<userTypes>({ email, pass })}> Entrar </Button>
+          <Button className="w-6/12 " onClick={() => logar({ email, pass })}> Entrar </Button>
         </div>
       </div>
     </div>
