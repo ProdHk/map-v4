@@ -20,10 +20,10 @@ export default function Handler() {
             try {
                 const ideia = await GetOneMapById({ id }).then(async ({ _id, estado, usuario, ideia, empresa, titulo,
                     desc, envolvidos, dataCadastro, dataPontuacao, pontos, }: mapTypes) => {
-                    setIdeia<mapTypes>({
+                    setIdeia<mapTypes>(
                         _id, estado, usuario, ideia, empresa, titulo, desc,
                         envolvidos, dataCadastro, dataPontuacao, pontos
-                    })
+                    )
                     try {
                         const usuarios = await BuscarUsuarios()
                         const username = usuarios.filter(({ _id }: any) => _id === usuario)
