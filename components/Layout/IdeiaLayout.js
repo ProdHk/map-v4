@@ -30,7 +30,7 @@ export default function IdeiaLayout(data) {
                             {ideia?.titulo}
                         </h2>
                         <h4 className="text-lg font-normal text-end mr-10">
-                            {/*   {username} */}
+                            {username ? `${username}` : "Carregando"}
                         </h4>
                         <div className="flex flex-col gap-5">
 

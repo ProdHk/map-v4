@@ -22,20 +22,26 @@ export default function Handler() {
                 const ideia = await BuscarIdeiaId({ id })
                 setIdeiaPendente(ideia[0])
                 console.log("Ideia carregada com sucesso")
-                const users = await BuscarUsuarios()
-                console.log("Usuarios carregados com sucesso")
-                const username = users.filter(({ _id }: any) => _id === ideia[0].usuario)
-                setUsuarios(username[0].nome)
 
 
             } catch (error) {
                 console.log("algo de errado rolou", error)
             }
         }
+        async function getUser() {
+
+            const users = await BuscarUsuarios()
+            console.log("Usuarios carregados com sucesso")
+            const username = users.find((i: any) => i._id === ideiaPendente.usuario)
+
+            setUsuarios(username)
+
+        }
 
         getIdeia({ id })
+        getUser()
     }, [])
-
+    console.log(usuarios)
 
     return (
         <div className="w-full h-full min-h-max">
