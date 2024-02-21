@@ -39,9 +39,10 @@ export default function FormCadastrarMelhoria() {
     const [usuario, setUsuario] = useState('')
     const [titulo, setTitulo] = useState('')
     const [desc, setDesc] = useState('')
+    const [sugestao, setSugestao] = useState('')
 
     return (
-        <div className="w-10/12 p-5 gap-5 bg-white rounded-md 
+        <div className="w-10/12 p-5 gap-5 bg-white rounded-md  m-5 
         flex flex-col items-center text-center justify-normal">
             {/* Form */}
 
@@ -82,14 +83,14 @@ export default function FormCadastrarMelhoria() {
 
                 </div>
             </div>
-            {/* TITULO E DESC */}
+            {/* ATITUDE E DESC */}
 
             <div className="flex flex-col w-full items-center text-center justify-center
             border-2 border-zinc-200 rounded-md">
                 <div className="flex flex-col text-center items-center w-full my-2 p-3">
 
-                    <label className="w-10/12 text-lg font-medium p-1">Titulo</label>
-                    <Input placeholder="Digite o titulo aqui"
+                    <label className="w-10/12 text-lg font-medium p-1">Descreva o acontecido</label>
+                    <Input placeholder="Digite aqui"
                         onChange={(e) => setTitulo(e.target.value)}
                         className="h-16 text-center items-center justify-center" />
 
@@ -97,17 +98,26 @@ export default function FormCadastrarMelhoria() {
 
                 <div className="flex flex-col text-center items-center w-full my-2 p-3">
 
-                    <label className="w-4/12 text-lg font-medium p-1">Descrição</label>
+                    <label className="w-4/12 text-lg font-medium p-1">Qual foi sua atitude ?</label>
                     <Textarea
                         onChange={(e) => setDesc(e.target.value)}
-                        placeholder="Descreva aqui"
+                        placeholder="Digite aqui"
+                        className="h-16 text-center items-center justify-center" />
+
+                </div>
+                <div className="flex flex-col text-center items-center w-full my-2 p-3">
+
+                    <label className="w-4/12 text-lg font-medium p-1">Qual sua sugestão de melhoria ?</label>
+                    <Textarea
+                        onChange={(e) => setSugestao(e.target.value)}
+                        placeholder="Digite aqui"
                         className="h-16 text-center items-center justify-center" />
 
                 </div>
                 <Button onClick={() => {
                     try {
                         CadastrarMelhoria({
-                            empresa, usuario, titulo, desc
+                            empresa, usuario, titulo, desc, sugestao
                         })
                         return router.push("/map")
                     } catch (error) {

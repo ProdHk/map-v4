@@ -36,7 +36,7 @@ export default function Handler() {
 
 
         getIdeia({ id })
-    })
+    }, [])
 
 
 

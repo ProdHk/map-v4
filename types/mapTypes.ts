@@ -25,6 +25,10 @@ export type mapTypes = {
     frase: String, // resumo de livro
     conteudo: String, // resumo de livro
 
+    //melhorias
+    atitudeTomada: String,
+    sugestao: String,
+
 
     tipoMelhoria: String, // sugestão, erro interno, problema atendimento, erro sistemico, telefonia, veiculos da empresa, manutenção de equipamentos, infraestrutura
     solucaoMelhoria: String,

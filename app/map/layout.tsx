@@ -12,7 +12,7 @@ export default function RootLayout({
     ">
       <SidebarUser />
       <div className="flex flex-col w-10/12 h-full gap-5 items-center text-center justify-start">
-        <Header />
+        {/*  <Header /> */}
         {children}
       </div>
     </div>

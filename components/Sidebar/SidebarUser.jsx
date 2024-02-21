@@ -7,7 +7,7 @@ export default function SidebarUser() {
 
 
     return (
-        <div className="flex flex-col bg-white  rounded-e-md w-2/12 p-3 gap-5 border-r border-r-zinc-200">
+        <div className="flex flex-col  bg-white  rounded-e-md w-2/12 p-3 gap-5 border-r border-r-zinc-200">
 
             {/*   <h2 className="text-md font-semibold  text-emerald-700">
                 Programa de excelência no trabalho
@@ -16,7 +16,7 @@ export default function SidebarUser() {
                 J.Lemara
             </h2>
 
-            <nav className="flex flex-col h-96 items-center justify-evenly text-center gap-3 mt-16">
+            <nav className="flex flex-col max-h-[500px] items-center justify-evenly text-center gap-3 mt-16">
                 {
                     userMenuItems?.map(({
                         id, name, icon, path,

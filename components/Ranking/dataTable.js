@@ -54,7 +54,7 @@ export function DataTable({ columns, data, }) {
                             {headerGroup.headers.map((header) => {
                                 return (
                                     <TableHead key={header.id}
-                                        className=" text-center">
+                                        className=" w-4/12 text-start px-10">
                                         {header.isPlaceholder
                                             ? null
                                             : flexRender(
@@ -81,7 +81,7 @@ export function DataTable({ columns, data, }) {
 
                                     {row.getVisibleCells().map((cell) => (
                                         <TableCell key={cell.id}
-                                            className=" text-center h-16 w-4/12 ">
+                                            className="w-4/12 text-start px-10 h-16 ">
                                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </TableCell>
                                     ))}

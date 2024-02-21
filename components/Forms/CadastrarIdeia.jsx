@@ -84,7 +84,7 @@ export default function FormCadastrarIdeia() {
 
             <div className="flex flex-row w-full items-center text-center justify-center
             border-2 border-zinc-200 rounded-md mt-5 bg-white">
-                <div className="flex flex-col text-center items-center w-5/12 my-2 p-3">
+                <div className="flex flex-col text-center items-center w-full my-2 p-3">
 
                     <label className="w-4/12 text-lg font-medium p-1">Titulo</label>
                     <Input placeholder="Digite o titulo aqui"
@@ -93,7 +93,7 @@ export default function FormCadastrarIdeia() {
 
                 </div>
 
-                <div className="flex flex-col text-center items-center w-6/12 my-2 p-3">
+                {/*  <div className="flex flex-col text-center items-center w-6/12 my-2 p-3">
 
                     <label className="w-10/12 text-lg font-medium p-1">Breve descrição</label>
                     <Textarea
@@ -101,7 +101,7 @@ export default function FormCadastrarIdeia() {
                         placeholder="Descreva aqui, de forma breve, sua ideia"
                         className="h-16 text-center items-center justify-center" />
 
-                </div>
+                </div> */}
             </div>
 
 
