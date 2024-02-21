@@ -15,6 +15,7 @@ export default function Handler() {
 
 
     const { id } = useParams()
+
     useEffect(() => {
 
         async function getIdeia({ id }: any) {

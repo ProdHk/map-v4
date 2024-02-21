@@ -19,7 +19,7 @@ export async function BuscarIdeias() {
     }
 }
 
-export async function BuscarIdeiaId(id) {
+export async function BuscarIdeiaId({ id }) {
     try {
 
         const ideias = await BuscarIdeias()

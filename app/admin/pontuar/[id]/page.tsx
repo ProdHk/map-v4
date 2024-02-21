@@ -19,19 +19,21 @@ export default function Handler() {
     useEffect(() => {
         async function getIdeia({ id }: any) {
             try {
-                const ideia = await BuscarIdeiaId(id)
+                const ideia = await BuscarIdeiaId({ id })
                 setIdeiaPendente(ideia[0])
                 console.log("Ideia carregada com sucesso")
                 const users = await BuscarUsuarios()
                 console.log("Usuarios carregados com sucesso")
                 const username = users.filter(({ _id }: any) => _id === ideia[0].usuario)
                 setUsuarios(username[0].nome)
+
+
             } catch (error) {
-                console.log("algo de errado rolou")
+                console.log("algo de errado rolou", error)
             }
         }
 
-        getIdeia(id)
+        getIdeia({ id })
     }, [])
 
 
