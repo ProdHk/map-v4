@@ -67,31 +67,33 @@ export function DataTable({ columns, data, }) {
                         </TableRow>
                     ))}
                 </TableHeader>
+
                 <TableBody>
-                    {table.getRowModel().rows?.length ? (
-                        table.getRowModel().rows.map((row) => (
-                            <TableRow
-                                key={row.id}
-                                data-state={row.getIsSelected() && "selected"}
-                            >
+                    {table.getRowModel().rows?.length ?
+                        (
+                            table.getRowModel().rows.map((row) => (
+                                <TableRow
+                                    key={row.id}
+                                    data-state={row.getIsSelected() && "selected"}
+                                >
 
 
 
-                                {row.getVisibleCells().map((cell) => (
-                                    <TableCell key={cell.id}
-                                        className=" text-center h-16 w-4/12 ">
-                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                    </TableCell>
-                                ))}
+                                    {row.getVisibleCells().map((cell) => (
+                                        <TableCell key={cell.id}
+                                            className=" text-center h-16 w-4/12 ">
+                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                        </TableCell>
+                                    ))}
+                                </TableRow>
+                            ))
+                        ) : (
+                            <TableRow>
+                                <TableCell colSpan={columns.length} className="h-24 text-center">
+                                    Carregando . . .
+                                </TableCell>
                             </TableRow>
-                        ))
-                    ) : (
-                        <TableRow>
-                            <TableCell colSpan={columns.length} className="h-24 text-center">
-                                Não encontrado
-                            </TableCell>
-                        </TableRow>
-                    )}
+                        )}
                 </TableBody>
             </Table>
         </div>
