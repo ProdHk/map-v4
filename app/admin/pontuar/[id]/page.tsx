@@ -11,6 +11,7 @@ import { useEffect, useState } from "react"
 export default function Handler() {
 
     const [ideiaPendente, setIdeiaPendente] = useState({})
+    const [uId, setUID] = useState('')
     const [usuarios, setUsuarios] = useState([])
 
     const { id } = useParams()
@@ -21,8 +22,11 @@ export default function Handler() {
             try {
                 const ideia = await BuscarIdeiaId({ id })
                 setIdeiaPendente(ideia[0])
-                console.log("Ideia carregada com sucesso")
+                const uid = ideia[0].usuario
+                setUID(uid)
 
+                console.log("Ideia carregada com sucesso")
+                console.log(ideia, uid)
 
             } catch (error) {
                 console.log("algo de errado rolou", error)
@@ -32,7 +36,7 @@ export default function Handler() {
 
             const users = await BuscarUsuarios()
             console.log("Usuarios carregados com sucesso")
-            const username = users.find((i: any) => i._id === ideiaPendente.usuario)
+            const username = users.find((i: any) => i._id === uId)
 
             setUsuarios(username)
 
@@ -41,7 +45,6 @@ export default function Handler() {
         getIdeia({ id })
         getUser()
     }, [])
-    console.log(usuarios)
 
     return (
         <div className="w-full h-full min-h-max">
