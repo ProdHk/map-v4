@@ -41,7 +41,7 @@ export default function ListIdeiasPendentes() {
                     <h2>Carregando...</h2>
                 ) : (
                     ideias?.length > 0 ? ideias.map(({ _id, titulo, usuario, dataCadastro }) => {
-                        const username = usuarios.find(({ _id }) => _id === usuario)
+                        const username = usuarios.find(({ _id }) => _id === _id)
                         console.log(username)
                         return (<Link href={`/admin/pontuar/${_id}`} key={_id}
                             className="flex flex-row border rounded-md border-zinc-100 py-2">
