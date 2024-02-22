@@ -20,8 +20,8 @@ export async function GET() {
 export async function POST(req: Request) {
 
     try {
-        const { autor, beneficios, frase, conteudo, empresa, titulo, usuario } = await req.json()
-        const novoResumo = await PostResumo(<mapTypes>{ autor, beneficios, frase, conteudo, empresa, titulo, usuario })
+        const { empresa, usuario, titulo, desc, beneficios, autor, frase } = await req.json()
+        const novoResumo = await PostResumo(<mapTypes>{ empresa, usuario, titulo, desc, beneficios, autor, frase })
         return Response.json(novoResumo)
     } catch (error) {
         return Response.json({

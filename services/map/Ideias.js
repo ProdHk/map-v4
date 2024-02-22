@@ -78,12 +78,12 @@ export async function CadastrarIdeia({ empresa, usuario, titulo, breveDesc, bene
     }
 }
 
-export async function PontuarIdeia({ id, pontos, idUsuario }) {
+export async function PontuarIdeia({ id, pontos }) {
     try {
         const pontuarIdeia = await axios.put(url,
             { id, pontos })
             .then((res) => res)
-        /*  const pontuarUsuario = await PontuarUsuario({ id: idUsuario, pontos }) */
+
         console.log("Ideia pontuada com sucesso!")
         return pontuarIdeia
     } catch (error) {

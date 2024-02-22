@@ -26,7 +26,6 @@ export default function Handler() {
                 const all = await GetAll()
                 const filter = all.filter(({ _id }: mapTypes) => _id === id)
                 const data = filter[0]
-                const uid = data.usuario
                 setIdeiaPendente(data)
             } catch (error) {
                 console.log("algo de errado rolou", error)
@@ -45,33 +44,20 @@ export default function Handler() {
         getUser()
 
     }, [])
-    /*     console.log(usuarios)
-     */
+
 
 
     return (
         <div className="w-full h-full min-h-max">
-            {/*  {
-                ideiaPendente.dataCadastro ?
-                    <PontuarLayout data={ideiaPendente} id={id} username={usuarios} />
-                    :
-                    <div className="w-full h-full min-w-10/12 flex flex-col items-center text-center justify-start p-5 gap-5">
+            <PontuarLayout data={ideiaPendente} id={id} username={usuarios} />
 
-                        <div className="flex flex-col w-10/12 p-5  gap-5 items-center text-center justify-center
-            bg-white rounded-md border border-zinc-200">
-                            Não foi possivel encontrar
-                        </div>
-                    </div>
-            } */}
-
-
-            <div className="w-full h-full min-w-10/12 flex flex-col items-center text-center justify-start p-5 gap-5">
+            {/*   <div className="w-full h-full min-w-10/12 flex flex-col items-center text-center justify-start p-5 gap-5">
 
                 <div className="flex flex-col w-10/12 p-5  gap-5 items-center text-center justify-center
             bg-white rounded-md border border-zinc-200">
                     em manutenção
                 </div>
-            </div>
+            </div> */}
 
         </div>
     )

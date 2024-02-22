@@ -1,18 +1,23 @@
 "use client"
 import { BuscarMelhoriasPendentes } from "@/services/map/Melhorias";
+import { BuscarUsuarios } from "@/services/usuarios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function ListMelhoriasPendentes() {
 
     const [ideias, setIdeias] = useState([]);
+    const [usuarios, setUsuarios] = useState([]);
+
     const [carregando, setCarregando] = useState(true);
 
     useEffect(() => {
         async function fetchIdeiasPendentes() {
             try {
                 const ideiasPendentes = await BuscarMelhoriasPendentes();
+                const users = await BuscarUsuarios();
                 setIdeias(ideiasPendentes);
+                setUsuarios(users);
                 setCarregando(false); // Definir carregamento como false quando as ideias forem obtidas
             } catch (error) {
                 console.error("Erro ao buscar ideias pendentes:", error);
@@ -37,14 +42,19 @@ export default function ListMelhoriasPendentes() {
                 {carregando ? ( // Verifica se está carregando
                     <h2>Carregando...</h2>
                 ) : (
-                    ideias.length > 0 ? ideias.map(({ _id, titulo, usuario, dataCadastro }) => (
-                        <Link href={`/admin/pontuar/${_id}`} key={_id}
-                            className="flex flex-row border rounded-md border-zinc-100 py-2">
-                            <p className="w-4/12 text-center">{usuario}</p>
-                            <p className="w-4/12 text-center">{dataCadastro}</p>
-                            <p className="w-4/12 text-center">{titulo}</p>
-                        </Link>
-                    )) :
+                    ideias?.length > 0 ? ideias.map(({ _id, descMelhoria, usuario, dataCadastro }) => {
+                        const username = usuarios.find(({ _id }) => _id === usuario)
+                        return (
+                            <Link href={`/admin/pontuar/${_id}`} key={_id}
+                                className=" flex flex-row border rounded-md border-zinc-100 py-2 
+                                hover:bg-slate-100 hover:border-slate-200
+                                transition-all ease-in-out">
+                                <p className="w-4/12 text-center">{username.nome}</p>
+                                <p className="w-4/12 text-center">{dataCadastro}</p>
+                                <p className="w-4/12 text-center">{descMelhoria}</p>
+                            </Link>
+                        )
+                    }) :
                         <h2>Nenhuma pendencia por aqui</h2>
                 )}
             </div>

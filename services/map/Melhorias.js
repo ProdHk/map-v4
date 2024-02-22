@@ -46,7 +46,7 @@ export async function BuscarMelhoriasPontuadas() {
 
 export async function BuscarMelhoriasPendentes() {
     try {
-        const melhorias = await BuscarIdeias()
+        const melhorias = await BuscarMelhorias()
         const melhoria = melhorias.filter(({ estado }) => estado === false)
         console.log("Melhorias encontrada com sucesso!")
         return melhoria

@@ -48,11 +48,11 @@ export async function GetResumosPendentes() {
 }
 
 
-export async function PostResumo({ autor, beneficios, frase, conteudo, empresa, titulo, usuario }: mapTypes) {
+export async function PostResumo({ empresa, usuario, titulo, desc, beneficios, autor, frase }: mapTypes) {
 
     try {
 
-        const resumo = { dataCadastro, resumo: true, estado, autor, beneficios, frase, conteudo, empresa, titulo, usuario }
+        const resumo = { dataCadastro, resumo: true, estado, empresa, usuario, titulo, desc, beneficios, autor, frase }
         const novoResumo = await Map.create(resumo)
         return novoResumo
     } catch (error) {

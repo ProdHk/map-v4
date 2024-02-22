@@ -57,12 +57,12 @@ export async function BuscarResumosPendentes() {
 }
 
 
-export async function CadastrarResumo({ empresa, usuario, titulo, resumo, beneficios, autor, frase }) {
+export async function CadastrarResumo({ empresa, usuario, titulo, desc, beneficios, autor, frase }) {
 
     try {
 
         const novoResumo = await axios.post(url,
-            { empresa, usuario, titulo, resumo, beneficios, autor, frase })
+            { empresa, usuario, titulo, desc, beneficios, autor, frase })
             .then((res) => res)
         console.log("Resumo adicionada com sucesso!")
         return novoResumo

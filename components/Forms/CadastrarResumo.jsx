@@ -37,7 +37,7 @@ export default function FormCadastrarResumo() {
     const [empresa, setEmpresa] = useState('')
     const [usuario, setUsuario] = useState('')
     const [titulo, setTitulo] = useState('')
-    const [resumo, setResumo] = useState('')
+    const [desc, setDesc] = useState('')
     const [beneficios, setBeneficios] = useState('')
     const [autor, setAutor] = useState('')
     const [frase, setFrase] = useState('')
@@ -104,7 +104,7 @@ export default function FormCadastrarResumo() {
 
                     <label className=" text-lg font-medium p-1">Resumo</label>
                     <Textarea
-                        onChange={(e) => setResumo(e.target.value)}
+                        onChange={(e) => setDesc(e.target.value)}
                         placeholder="Descreva aqui os melhores pontos da sua leitura"
                         className="h-16 text-center items-center justify-center" />
 
@@ -152,7 +152,7 @@ export default function FormCadastrarResumo() {
             </div>
             <Button onClick={() => {
                 try {
-                    CadastrarResumo({ empresa, usuario, titulo, resumo, beneficios, autor, frase })
+                    CadastrarResumo({ empresa, usuario, titulo, desc, beneficios, autor, frase })
                     return router.push('/map')
                 } catch (error) {
                     console.log("Aconteceu algo de errado ao tentar cadastrar o resumo")
