@@ -66,16 +66,16 @@ export const adminMenuItems = [
         path: "/admin/pontuar",
         icon: <LuAward />
     },
-    {
-        id: 5,
-        name: "Usuarios",
-        path: "/admin/usuarios",
-        icon: <LuUserCog />
-    },
-    {
-        id: 6,
-        name: "Config",
-        path: "/admin/config",
-        icon: <LuBrainCog />
-    },
+    /*  {
+         id: 5,
+         name: "Usuarios",
+         path: "/admin/usuarios",
+         icon: <LuUserCog />
+     },
+     {
+         id: 6,
+         name: "Config",
+         path: "/admin/config",
+         icon: <LuBrainCog />
+     }, */
 ]
