@@ -40,15 +40,25 @@ export default function ListIdeiasPendentes() {
                 {carregando ? ( // Verifica se está carregando
                     <h2>Carregando...</h2>
                 ) : (
-                    ideias?.length > 0 ? ideias.map(({ _id, titulo, usuario, dataCadastro }) => {
+                    ideias?.length > 0 ? ideias.map(({ _id, ideia, melhoria, resumo, titulo, usuario, dataCadastro }) => {
                         const username = usuarios.find(({ _id }) => _id === _id)
                         console.log(username)
-                        return (<Link href={`/admin/pontuar/${_id}`} key={_id}
-                            className="flex flex-row border rounded-md border-zinc-100 py-2">
-                            <p className="w-4/12 text-center">{username.nome}</p>
-                            <p className="w-4/12 text-center">{dataCadastro}</p>
-                            <p className="w-4/12 text-center">{titulo}</p>
-                        </Link>)
+                        return (
+                            <Link href={`/admin/pontuar/${_id}`} key={_id}
+                                className={`
+                            
+                            flex flex-row border rounded-md border-zinc-100 py-2 
+                            transition-all ease-in-out
+                            ${resumo === true ? "bg-blue-200 hover:bg-blue-300" : ""}
+                            ${melhoria === true ? "bg-emerald-200 hover:bg-emerald-300" : ""}
+                            ${ideia === true ? "bg-purple-200 hover:bg-purple-300" : ""}
+
+                            `}>
+                                <p className="w-4/12 text-center">{username.nome}</p>
+                                <p className="w-4/12 text-center">{dataCadastro}</p>
+                                <p className="w-4/12 text-center">{titulo}</p>
+                            </Link>
+                        )
                     }) :
                         <h2>Nenhuma pendencia por aqui</h2>
                 )}

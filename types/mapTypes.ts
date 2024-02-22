@@ -26,13 +26,13 @@ export type mapTypes = {
     conteudo: String, // resumo de livro
 
     //melhorias
-    atitudeTomada: String,
+    atitude: String,
     sugestao: String,
 
 
     tipoMelhoria: String, // sugestão, erro interno, problema atendimento, erro sistemico, telefonia, veiculos da empresa, manutenção de equipamentos, infraestrutura
     solucaoMelhoria: String,
-    sujestaoMelhoria: String,
+    descMelhoria: String,
 
 
     dataCadastro: String,

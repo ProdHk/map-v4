@@ -1,55 +1,78 @@
 "use client"
 
 
-import IdeiaLayout from "@/components/Layout/IdeiaLayout"
-import { BuscarIdeiaId } from "@/services/map/Ideias"
+import { GetAll } from "@/services/map"
 import { BuscarUsuarios } from "@/services/usuarios"
+import { mapTypes } from "@/types/mapTypes"
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
+import PontuarLayout from '@/components/Layout/PontuarLayout'
+import { userTypes } from "@/types/userTypes"
 
 // eslint-disable-next-line @next/next/no-async-client-component
 export default function Handler() {
 
-    const [ideiaPendente, setIdeiaPendente] = useState({})
-    const [uId, setUID] = useState('')
+    const [ideiaPendente, setIdeiaPendente] = useState<any>({})
     const [usuarios, setUsuarios] = useState([])
 
     const { id } = useParams()
 
 
     useEffect(() => {
+
+
         async function getIdeia({ id }: any) {
             try {
-                const ideia = await BuscarIdeiaId({ id })
-                setIdeiaPendente(ideia[0])
-                const uid = ideia[0].usuario
-                setUID(uid)
-
-                console.log("Ideia carregada com sucesso")
-                console.log(ideia, uid)
-
+                const all = await GetAll()
+                const filter = all.filter(({ _id }: mapTypes) => _id === id)
+                const data = filter[0]
+                const uid = data.usuario
+                setIdeiaPendente(data)
             } catch (error) {
                 console.log("algo de errado rolou", error)
             }
         }
+
+
+
         async function getUser() {
-
             const users = await BuscarUsuarios()
-            console.log("Usuarios carregados com sucesso")
-            const username = users.find((i: any) => i._id === uId)
-
-            setUsuarios(username)
+            setUsuarios(users)
 
         }
 
         getIdeia({ id })
         getUser()
+
     }, [])
+    /*     console.log(usuarios)
+     */
+
 
     return (
         <div className="w-full h-full min-h-max">
+            {/*  {
+                ideiaPendente.dataCadastro ?
+                    <PontuarLayout data={ideiaPendente} id={id} username={usuarios} />
+                    :
+                    <div className="w-full h-full min-w-10/12 flex flex-col items-center text-center justify-start p-5 gap-5">
 
-            <IdeiaLayout data={ideiaPendente} id={id} username={usuarios} />
+                        <div className="flex flex-col w-10/12 p-5  gap-5 items-center text-center justify-center
+            bg-white rounded-md border border-zinc-200">
+                            Não foi possivel encontrar
+                        </div>
+                    </div>
+            } */}
+
+
+            <div className="w-full h-full min-w-10/12 flex flex-col items-center text-center justify-start p-5 gap-5">
+
+                <div className="flex flex-col w-10/12 p-5  gap-5 items-center text-center justify-center
+            bg-white rounded-md border border-zinc-200">
+                    em manutenção
+                </div>
+            </div>
+
         </div>
     )
 }

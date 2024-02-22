@@ -23,6 +23,7 @@ export async function BuscarIdeiaId({ id }) {
     try {
 
         const ideias = await BuscarIdeias()
+        console.log(ideias)
         const ideia = await ideias.filter(({ _id }) => _id === id)
         return ideia
 

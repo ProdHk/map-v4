@@ -34,11 +34,17 @@ export default function FormCadastrarMelhoria() {
 
     }, [])
 
+
+
     const router = useRouter()
+
     const [empresa, setEmpresa] = useState('')
     const [usuario, setUsuario] = useState('')
-    const [titulo, setTitulo] = useState('')
-    const [desc, setDesc] = useState('')
+
+
+
+    const [descMelhoria, setDescMelhoria] = useState('')
+    const [atitude, setAtitude] = useState('')
     const [sugestao, setSugestao] = useState('')
 
     return (
@@ -91,7 +97,7 @@ export default function FormCadastrarMelhoria() {
 
                     <label className="w-10/12 text-lg font-medium p-1">Descreva o acontecido</label>
                     <Input placeholder="Digite aqui"
-                        onChange={(e) => setTitulo(e.target.value)}
+                        onChange={(e) => setDescMelhoria(e.target.value)}
                         className="h-16 text-center items-center justify-center" />
 
                 </div>
@@ -100,7 +106,7 @@ export default function FormCadastrarMelhoria() {
 
                     <label className="w-4/12 text-lg font-medium p-1">Qual foi sua atitude ?</label>
                     <Textarea
-                        onChange={(e) => setDesc(e.target.value)}
+                        onChange={(e) => setAtitude(e.target.value)}
                         placeholder="Digite aqui"
                         className="h-16 text-center items-center justify-center" />
 
@@ -117,7 +123,7 @@ export default function FormCadastrarMelhoria() {
                 <Button onClick={() => {
                     try {
                         CadastrarMelhoria({
-                            empresa, usuario, titulo, desc, sugestao
+                            empresa, usuario, descMelhoria, atitude, sugestao,
                         })
                         return router.push("/map")
                     } catch (error) {

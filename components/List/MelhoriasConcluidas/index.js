@@ -13,6 +13,7 @@ export default function MelhoriasConcluidasTable() {
 
         async function buscarIdeias() {
             const data = await BuscarMelhoriasPontuadas()
+            console.log(data)
             setIdeias(data)
         }
         async function buscarUsuarios() {
@@ -21,10 +22,10 @@ export default function MelhoriasConcluidasTable() {
         }
         buscarIdeias() // Carrega os dados iniciais
         buscarUsuarios() // Carrega os dados iniciais
-
-        const interval = setInterval(buscarIdeias, 5000) // Polling a cada 5 segundos
-
-        return () => clearInterval(interval) // Limpa o intervalo quando o componente é desmontado
+        /* 
+                const interval = setInterval(buscarIdeias, 5000)
+        
+                return () => clearInterval(interval)  */
     }, [])
 
     return (

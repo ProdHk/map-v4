@@ -14,6 +14,7 @@ export default function IdeiaLayout(data) {
     const ideia = data.data
     const id = data.id
     const username = data.username
+
     return (
         <div className="w-full h-full min-w-10/12 flex flex-col items-center text-center justify-start p-5 gap-5">
 
@@ -26,38 +27,78 @@ export default function IdeiaLayout(data) {
 
                     {/* HEADER */}
                     <div className="w-full p-3 flex flex-col">
-                        <h2 className="text-2xl text-emerald-700 font-semibold text-center">
-                            {ideia?.titulo}
-                        </h2>
-                        <h4 className="text-lg font-normal text-end mr-10">
-                            {username ? `${username}` : "Carregando"}
-                        </h4>
+                        {ideia.titulo ?
+                            <h2 className="text-2xl text-emerald-700 font-semibold text-center">
+                                {ideia?.titulo}
+                            </h2>
+                            :
+                            ""
+                        }
+
+
+                        {username ?
+                            <h4 className="text-lg font-normal text-end mr-10">
+                                {username ? `${username}` : "Carregando"}
+                            </h4>
+                            :
+                            ""
+                        }
+
+
                         <div className="flex flex-col gap-5">
 
-                            <div className="flex flex-row gap-5  items-start justify-start">
-                                <label className="font-semibold">Empresa:</label>
-                                <h4>{ideia?.empresa}</h4>
-                            </div>
-                            <div className="flex flex-row gap-5  items-start justify-start">
-                                <label className="font-semibold">Data de cadastro:</label>
-                                <h4>{ideia?.dataCadastro}</h4>
-                            </div>
 
-                            <div className="flex flex-row gap-5  items-start justify-start">
-                                <label className="font-semibold">Envolvidos</label>
-                                <h4>{ideia?.envolvidos}</h4>
-                            </div>
-                            <div className="flex flex-row gap-5  items-start justify-start">
-                                <label className="font-semibold">Resumo:</label>
-                                <h4>{ideia?.breveDesc}</h4>
-                            </div>
+
+                            {ideia.empresa ?
+                                <div className="flex flex-row gap-5  items-start justify-start">
+                                    <label className="font-semibold">Empresa:</label>
+                                    <h4>{ideia?.empresa}</h4>
+                                </div>
+                                :
+                                ""
+                            }
+
+
+                            {ideia.dataCadastro ?
+                                <div className="flex flex-row gap-5  items-start justify-start">
+                                    <label className="font-semibold">Data de cadastro:</label>
+                                    <h4>{ideia?.dataCadastro}</h4>
+                                </div>
+                                :
+                                ""
+                            }
+
+                            {
+                                ideia.envolvidos ?
+                                    <div className="flex flex-row gap-5  items-start justify-start">
+                                        <label className="font-semibold">Envolvidos</label>
+                                        <h4>{ideia?.envolvidos}</h4>
+                                    </div>
+                                    :
+                                    ""
+                            }
+
+                            {
+                                ideia.breveDesc ?
+                                    <div className="flex flex-row gap-5  items-start justify-start">
+                                        <label className="font-semibold">Resumo:</label>
+                                        <h4>{ideia?.breveDesc}</h4>
+                                    </div>
+                                    :
+                                    ""
+                            }
                         </div>
                     </div>
                     {/* BODY */}
-                    <div className="w-10/12 p-3 flex flex-col  text-lg  text-start font-sans">
-                        <label className="font-semibold">Descrição:</label>
-                        {ideia?.desc}
-                    </div>
+                    {
+                        ideia.desc ?
+                            <div className="w-10/12 p-3 flex flex-col  text-lg  text-start font-sans">
+                                <label className="font-semibold">Descrição:</label>
+                                {ideia?.desc}
+                            </div>
+                            :
+                            ""
+                    }
 
 
                 </div>

@@ -57,12 +57,12 @@ export async function BuscarMelhoriasPendentes() {
 }
 
 
-export async function CadastrarMelhoria({ empresa, usuario, titulo, desc, sugestao }) {
+export async function CadastrarMelhoria({ empresa, usuario, descMelhoria, atitude, sugestao, }) {
 
     try {
 
         const novaMelhoria = await axios.post(url,
-            { empresa, usuario, titulo, desc, sugestao })
+            { empresa, usuario, descMelhoria, atitude, sugestao, })
             .then((res) => res)
         console.log("Ideia adicionada com sucesso!")
         return novaMelhoria

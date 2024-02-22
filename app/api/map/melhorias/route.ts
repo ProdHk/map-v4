@@ -15,8 +15,8 @@ export async function GET() {
 export async function POST(req: Request) {
 
     try {
-        const { titulo, empresa, desc, usuario, sugestao } = await req.json()
-        const novaMelhoria = await PostMelhoria(<mapTypes>{ titulo, empresa, desc, usuario, sugestao })
+        const { empresa, usuario, descMelhoria, atitude, sugestao } = await req.json()
+        const novaMelhoria = await PostMelhoria(<mapTypes>{ empresa, usuario, descMelhoria, atitude, sugestao, })
         return Response.json(novaMelhoria)
     } catch (error) {
         return Response.json({ msg: "Houve algo de errado", error })

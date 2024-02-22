@@ -47,11 +47,11 @@ export async function GetMelhoriasPendentes() {
 }
 
 
-export async function PostMelhoria({ titulo, empresa, desc, usuario }: mapTypes) {
+export async function PostMelhoria({ empresa, usuario, descMelhoria, atitude, sugestao, }: mapTypes) {
 
     try {
 
-        const melhoria = { dataCadastro, melhoria: true, estado, titulo, empresa, desc, usuario }
+        const melhoria = { dataCadastro, melhoria: true, estado, empresa, usuario, descMelhoria, atitude, sugestao, }
         const newMap = await Map.create(melhoria)
         return newMap
     } catch (error) {

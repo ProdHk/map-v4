@@ -3,9 +3,9 @@ import axios from "axios"
 const url = "/api/map"
 
 
-export async function GetAllMaps() {
+export async function GetAll() {
     try {
-        const all = await axios.get(url).then((res) => res)
+        const all = await axios.get(url).then((res) => res.data)
         return all
     } catch (error) {
         console.log("algo de errado", error)
