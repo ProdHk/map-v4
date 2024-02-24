@@ -12,7 +12,7 @@ export default function RootLayout({
     ">
 
       <SidebarAdmin />
-      <div className="flex flex-col w-10/12 h-full gap-5 items-center ">
+      <div className="flex flex-col w-10/12 min-h-max h-full gap-5 items-center ">
         {/*         <Header /> */}
         {children}
       </div>
