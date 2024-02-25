@@ -46,9 +46,27 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
 
     try {
-        const { id, nome, tag, pass, email, roles, team, imageProfile } = await req.json()
+        const { id, nome,
+            tag,
+            pass,
+            email,
+            empresa,
+            dataNasc,
+            dataAdmissao,
+            team,
+            pontos, } = await req.json()
 
-        const editedUser = await PutUser(<userTypes>{ id, nome, tag, pass, email, roles, team, imageProfile })
+        const editedUser = await PutUser(<userTypes>{
+            id, nome,
+            tag,
+            pass,
+            email,
+            empresa,
+            dataNasc,
+            dataAdmissao,
+            team,
+            pontos,
+        })
 
         return Response.json({ msg: "Usuario editado com sucesso", editedUser })
     } catch (error) {

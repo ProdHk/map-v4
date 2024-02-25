@@ -28,10 +28,28 @@ export async function PostUser({ nome, tag, pass, email, roles, team, imageProfi
     }
 }
 
-export async function PutUser({ id, nome, tag, pass, email, roles, team, imageProfile }: userTypes) {
+export async function PutUser({ id, nome,
+    tag,
+    pass,
+    email,
+    empresa,
+    dataNasc,
+    dataAdmissao,
+    team,
+    pontos, }: userTypes) {
 
     try {
-        const newUser = await Usuarios.findByIdAndUpdate(id, { nome, tag, pass, email, roles, team, imageProfile })
+        const newUser = await Usuarios.findByIdAndUpdate(id, {
+            nome,
+            tag,
+            pass,
+            email,
+            empresa,
+            dataNasc,
+            dataAdmissao,
+            team,
+            pontos,
+        })
         console.log("Usuario cadastrado com sucesso!")
         return newUser
     } catch (error) {

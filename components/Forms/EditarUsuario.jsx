@@ -7,11 +7,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import { useRouter } from 'next/navigation'
-import { CadastrarUsuario } from "@/services/usuarios"
+import { CadastrarUsuario, EditarUsuario } from "@/services/usuarios"
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 import { CalendarIcon } from "@radix-ui/react-icons"
 
-export default function FormCadastrarUsuario() {
+export default function FormEditarUsuario({ usuario }) {
 
 
     const router = useRouter()
@@ -86,7 +86,7 @@ export default function FormCadastrarUsuario() {
 
             <Button onClick={() => {
                 try {
-                    CadastrarUsuario({
+                    EditarUsuario({
                         nome,
                         tag,
                         pass,
@@ -97,7 +97,7 @@ export default function FormCadastrarUsuario() {
                         team,
                         pontos,
                     })
-                    return router.push("/map")
+                    return router.push("/admin")
 
                 } catch (error) {
                     console.log("algo de errado aconteceu")

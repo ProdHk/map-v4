@@ -27,6 +27,8 @@ export async function PontuarUsuario({ id, pontos }: userTypes) {
         return error
     }
 }
+
+
 export async function CadastrarUsuario({ nome,
     tag,
     pass,
@@ -45,6 +47,31 @@ export async function CadastrarUsuario({ nome,
             team, pontos
         }).then((res) => res.data)
         console.log("Cadastrado com sucesso!")
+        return pontuar
+    } catch (error) {
+        console.log("Não foi possivel carregar os usuario", error)
+        return error
+    }
+}
+
+export async function EditarUsuario({
+    id,
+    nome,
+    tag,
+    pass,
+    email,
+    empresa,
+    dataNasc,
+    dataAdmissao,
+    team,
+    pontos, }: userTypes) {
+
+    const url = "/api/usuarios"
+    try {
+        const pontuar = await axios.put(url, {
+            id, nome, tag, pass, email, team, pontos, empresa,
+        }).then((res) => res.data)
+        console.log("Editado com sucesso!")
         return pontuar
     } catch (error) {
         console.log("Não foi possivel carregar os usuario", error)
