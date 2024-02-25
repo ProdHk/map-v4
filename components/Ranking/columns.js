@@ -12,8 +12,8 @@ export const columns = [
         accessorKey: "nome",
         header: "Nome",
     },
-    {
-        accessorKey: "position",
-        header: "Posição",
-    },
+    /*  {
+         accessorKey: "position",
+         header: "Posição",
+     }, */
 ]

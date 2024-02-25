@@ -33,7 +33,7 @@ export default function ListIdeiasPendentesUsuario(data) {
                         </Link>
                     )
                 }) :
-                    <h2>Nenhuma ideia foi encontrada</h2>
+                    <h2>Nenhuma melhoria foi encontrada</h2>
                 }
 
 

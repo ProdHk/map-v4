@@ -51,3 +51,31 @@ export async function CadastrarUsuario({ nome,
         return error
     }
 }
+
+
+export async function LogarUsuario({ email, pass }: any) {
+    try {
+        const userEmail = email
+        const usuarios = await BuscarUsuarios()
+
+        const userExist = usuarios.filter(({ email }: userTypes) => email === userEmail)
+        const access = userExist[0]?.pass === pass
+        if (access === true) {
+            return userExist[0]?.roles
+        } else {
+            return false
+        }
+
+        /* 
+                if (userExist.pass === pass) {
+                    return userExist
+                } else {
+                    let userDontExist
+                    return userDontExist
+                } */
+
+
+    } catch (error) {
+        console.log(error)
+    }
+}

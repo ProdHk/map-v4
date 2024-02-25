@@ -41,12 +41,12 @@ export function DataTable({ columns, data, usuarios }) {
         <div className="rounded-md border">
             <div className="flex items-center p-3   text-center justify-center">
                 <Input
-                    placeholder="Digite uma palavra chave"
+                    placeholder="Digite o nome do colaborador desejado "
                     value={(table.getColumn("nome")?.getFilterValue()) ?? ""}
                     onChange={(event) =>
                         table.getColumn("nome")?.setFilterValue(event.target.value)
                     }
-                    className="max-w-sm"
+                    className="max-w-sm text-center"
                 />
             </div>
             <Table>

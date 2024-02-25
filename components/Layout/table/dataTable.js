@@ -99,7 +99,7 @@ export function DataTable({ columns, data, usuarios }) {
                     ) : (
                         <TableRow>
                             <TableCell colSpan={columns.length} className="h-24 text-center">
-                                Não encontrado
+                                Carregando . . .
                             </TableCell>
                         </TableRow>
                     )}

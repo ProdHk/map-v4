@@ -51,12 +51,7 @@ export default function FormCadastrarUsuario() {
                 <Input type="password" onChange={(e) => setPass(e.target.value)}
                     className="w-8/12" />
             </div>
-            <div className="flex flex-row w-full items-center text-center justify-center
-            border-2 border-zinc-200 rounded-md mt-5 bg-white">
-                <label className=" text-lg font-medium p-1 w-3/12">Usuario UAU</label>
-                <Input type="text" onChange={(e) => setTag(e.target.value)}
-                    className="w-8/12" />
-            </div>
+
             <div className="flex flex-row w-full items-center text-center justify-center
             border-2 border-zinc-200 rounded-md mt-5 bg-white">
                 <label className=" text-lg font-medium p-1 w-3/12">Setor </label>
@@ -72,60 +67,6 @@ export default function FormCadastrarUsuario() {
                         <SelectItem value="operacoes">Operações</SelectItem>
                     </SelectContent>
                 </Select>
-            </div>
-            <div className="flex flex-row justify-between w-full gap-5">
-
-                <div className="flex flex-row w-full items-center text-center justify-between p-3
-            border-2 border-zinc-200 rounded-md mt-5 bg-white">
-                    <label className=" text-lg font-medium p-1 ">Data de admissão</label>
-                    <Popover>
-                        <PopoverTrigger asChild>
-                            <Button
-                                variant={"outline"}
-
-                            >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                <span>Selecione uma data</span>
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0">
-                            <Calendar
-                                ISOWeek={true}
-                                mode="single"
-                                selected={dataAdmissao}
-                                onSelect={setDataAdmissao}
-                            />
-                        </PopoverContent>
-                    </Popover>
-                </div>
-
-                <div className="flex flex-row w-full items-center text-center justify-between p-3
-            border-2 border-zinc-200 rounded-md mt-5 bg-white">
-                    <label className=" text-lg font-medium p-1 ">Data de nascimento</label>
-                    <Popover>
-                        <PopoverTrigger asChild>
-                            <Button
-                                variant={"outline"}
-
-                            >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                <span>Selecione uma data</span>
-                            </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0">
-                            <Calendar
-                                ISOWeek={true}
-                                mode="single"
-                                selected={dataNasc}
-                                onSelect={setDataNasc}
-                            />
-                        </PopoverContent>
-                    </Popover>
-                </div>
-
-
-
-
             </div>
 
 

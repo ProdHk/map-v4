@@ -1,9 +1,11 @@
 "use client"
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { userTypes } from "@/types/userTypes";
 import { useRouter } from 'next/navigation'
 import { useState } from "react";
+import { LogarUsuario } from '@/services/usuarios'
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 
 export default function Home() {
   const router = useRouter()
@@ -11,19 +13,9 @@ export default function Home() {
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
 
+  const [popup, setPopup] = useState(false)
 
-  function logar({ email, pass }: any) {
 
-    if (email === "admin") {
-
-      if (pass === "1234") {
-        return router.push("/admin")
-      }
-      alert("senha errada")
-    }
-    console.log("email errado")
-
-  }
 
 
   return (
@@ -31,6 +23,16 @@ export default function Home() {
         flex flex-col items-center text-center justify-center
         bg-gradient-to-r from-emerald-500 to-blue-500  ">
 
+      <Alert variant="destructive" className={` 
+      ${popup === false ? "hidden" : "visible"}
+      transition-all ease-in-out
+      bg-white w-4/12`  }>
+        <ExclamationTriangleIcon className="h-4 w-4" />
+        <AlertTitle>Algo de errado aconteceu !</AlertTitle>
+        <AlertDescription>
+          O email ou senha estão incorretos!
+        </AlertDescription>
+      </Alert>
       <div className="w-6/12 h-5/6
             flex flex-col items-center
             p-5 gap-5 ">
@@ -53,9 +55,28 @@ export default function Home() {
             <label>Senha</label>
             <Input placeholder="Digite aqui" type="password" onChange={(e) => setPass(e.target.value)} />
           </div>
-          <Button className="w-6/12 " onClick={() => logar({ email, pass })}> Entrar </Button>
+          <Button className="w-6/12 " onClick={async () => {
+            try {
+              const roles: any = await LogarUsuario({ email, pass })
+              console.log(roles)
+              if (roles === false) {
+                setPopup(true)
+                setTimeout(() => {
+                  setPopup(false)
+                }, 5000);
+                return
+              }
+              roles === "Admin" ?
+                router.push('/admin')
+                :
+                router.push('/map')
+            } catch (error) {
+              console.log("não foi possivel fazer login", error)
+            }
+          }}> Entrar </Button>
         </div>
       </div>
+
     </div>
   );
 }

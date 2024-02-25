@@ -81,7 +81,7 @@ export function DataTable({ columns, data, }) {
 
                                     {row.getVisibleCells().map((cell) => (
                                         <TableCell key={cell.id}
-                                            className="w-4/12 text-start px-10 h-16 ">
+                                            className=" text-start px-10 h-16 ">
                                             {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                         </TableCell>
                                     ))}
