@@ -42,9 +42,9 @@ export function DataTable({ columns, data, usuarios }) {
             <div className="flex items-center p-3   text-center justify-center">
                 <Input
                     placeholder="Digite uma palavra chave"
-                    value={(table.getColumn("titulo")?.getFilterValue()) ?? ""}
+                    value={(table.getColumn("nome")?.getFilterValue()) ?? ""}
                     onChange={(event) =>
-                        table.getColumn("titulo")?.setFilterValue(event.target.value)
+                        table.getColumn("nome")?.setFilterValue(event.target.value)
                     }
                     className="max-w-sm"
                 />
@@ -76,8 +76,8 @@ export function DataTable({ columns, data, usuarios }) {
                     {table.getRowModel().rows?.length ? (
                         table.getRowModel().rows.map((row) => {
 
-                            console.log(row.original)
-
+                            /*                             console.log(row.original)
+                             */
                             return <TableRow
                                 key={row.id}
                                 data-state={row.getIsSelected() && "selected"}

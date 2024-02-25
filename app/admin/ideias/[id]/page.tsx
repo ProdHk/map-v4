@@ -79,7 +79,7 @@ export default function Handler() {
                                 </div>
                                 <div className="flex flex-row gap-5  items-start justify-start">
                                     <label className="font-semibold">Pontos:</label>
-                                    <h4>{ideia?.pontos.toString()}</h4>
+                                    <h4>{ideia?.pontos?.toString()}</h4>
                                 </div>
 
                                 <div className="flex flex-row gap-5  items-start justify-start">

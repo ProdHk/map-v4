@@ -1,4 +1,4 @@
-import { mapTypes } from "@/types/mapTypes"
+import { userTypes } from "@/types/userTypes"
 import axios from "axios"
 
 
@@ -16,11 +16,35 @@ export async function BuscarUsuarios() {
 }
 
 
-export async function PontuarUsuario({ id, pontos }: mapTypes) {
+export async function PontuarUsuario({ id, pontos }: userTypes) {
     const url = "/api/usuarios/pontuar"
     try {
         const pontuar = await axios.post(url, { id, pontos }).then((res) => res.data)
         console.log("Pontuado com sucesso!")
+        return pontuar
+    } catch (error) {
+        console.log("Não foi possivel carregar os usuario", error)
+        return error
+    }
+}
+export async function CadastrarUsuario({ nome,
+    tag,
+    pass,
+    email,
+    empresa,
+    dataNasc,
+    dataAdmissao,
+    team,
+    pontos, }: userTypes) {
+
+    const url = "/api/usuarios"
+    try {
+        const pontuar = await axios.post(url, {
+            nome, tag, pass, email,
+            empresa, dataNasc, dataAdmissao,
+            team, pontos
+        }).then((res) => res.data)
+        console.log("Cadastrado com sucesso!")
         return pontuar
     } catch (error) {
         console.log("Não foi possivel carregar os usuario", error)

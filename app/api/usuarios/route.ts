@@ -24,8 +24,16 @@ export async function GET() {
 export async function POST(req: Request) {
 
     try {
-        const { nome, tag, pass, email, roles, team, imageProfile } = await req.json()
-        const newUser = await PostUser(<userTypes>{ nome, tag, pass, email, roles, team, imageProfile })
+        const { nome, tag, pass, email,
+            empresa, dataNasc, dataAdmissao,
+            team, pontos } = await req.json()
+
+        const newUser = await PostUser(<userTypes>{
+            nome, tag, pass, email,
+            empresa, dataNasc, dataAdmissao,
+            team, pontos
+        })
+
         return Response.json({ msg: "Usuario cadastrado com sucesso!", newUser })
     } catch (error) {
         console.log("Algo de errado aconteceu ao tentar cadastrar o usuario", error)
