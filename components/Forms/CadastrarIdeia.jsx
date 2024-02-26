@@ -2,39 +2,24 @@
 
 import Cookies from 'js-cookie';
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
 import { Input } from "../ui/input"
 import { Textarea } from "../ui/textarea"
 import { Button } from "../ui/button"
 import { CadastrarIdeia } from "@/services/map/Ideias"
 import { useRouter } from 'next/navigation'
-import { BuscarUsuarios } from "@/services/usuarios"
 
 export default function FormCadastrarIdeia() {
 
-    const [usuarios, setUsuarios] = useState([])
-    const userIdFromCookie = Cookies.get('userId');
-    console.log(userIdFromCookie)
 
-    useEffect(() => {
-        async function getUsers() {
-            try {
-                const data = await BuscarUsuarios()
-                setUsuarios(data)
-            } catch (error) {
-                console.log("Erro", error)
-            }
-        }
-        getUsers()
 
-    }, [])
+
     const router = useRouter()
 
     const [empresa, setEmpresa] = useState('')
-    const [usuario, setUsuario] = useState('')
+    const usuario = Cookies.get('userId');
     const [titulo, setTitulo] = useState('')
-    const [breveDesc, setBreveDesc] = useState('')
     const [beneficios, setBeneficios] = useState('')
     const [envolvidos, setEnvolvidos] = useState('')
     const [desc, setDesc] = useState('')
@@ -63,22 +48,7 @@ export default function FormCadastrarIdeia() {
 
                 </div>
 
-                <div className="flex flex-col text-center items-center justify-between w-6/12 my-2 p-3">
-                    <label className="w-6/12 text-lg font-medium p-1">Informe seu usuario</label>
-                    <Select onValueChange={(e) => setUsuario(e)} >
-                        <SelectTrigger className="flex flex-row items-center justify-center text-center">
-                            <SelectValue placeholder="Clique aqui" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            {usuarios.map(({ _id, nome }) => (
-                                <SelectItem key={_id} value={_id}>
-                                    {nome}
-                                </SelectItem>
-                            ))}
 
-                        </SelectContent>
-                    </Select>
-                </div>
             </div>
 
 
@@ -151,7 +121,7 @@ export default function FormCadastrarIdeia() {
             <Button onClick={() => {
                 try {
                     CadastrarIdeia({
-                        empresa, usuario, titulo, breveDesc, beneficios, envolvidos, desc
+                        empresa, usuario, titulo, beneficios, envolvidos, desc
                     })
                     return router.push("/map")
 
