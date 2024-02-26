@@ -1,6 +1,6 @@
 "use client"
 
-
+import Cookies from 'js-cookie';
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import {
@@ -11,31 +11,17 @@ import {
     SelectContent
 } from "../ui/select"
 import { Textarea } from "../ui/textarea"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useRouter } from 'next/navigation'
 import { CadastrarResumo } from "@/services/map/Resumos"
-import { BuscarUsuarios } from "@/services/usuarios"
 
 export default function FormCadastrarResumo() {
 
-    const [usuarios, setUsuarios] = useState([])
 
 
-    useEffect(() => {
-        async function getUsers() {
-            try {
-                const data = await BuscarUsuarios()
-                setUsuarios(data)
-            } catch (error) {
-                console.log("Erro", error)
-            }
-        }
-        getUsers()
-
-    }, [])
     const router = useRouter()
     const [empresa, setEmpresa] = useState('')
-    const [usuario, setUsuario] = useState('')
+    const usuario = Cookies.get('userId');
     const [titulo, setTitulo] = useState('')
     const [desc, setDesc] = useState('')
     const [beneficios, setBeneficios] = useState('')
@@ -66,24 +52,7 @@ export default function FormCadastrarResumo() {
                     </Select>
 
                 </div>
-                <div className="flex flex-col text-center items-center w-6/12 my-2 p-3">
 
-                    <label className="w-6/12 text-lg font-medium p-1">Informe seu usuario</label>
-                    <Select onValueChange={(e) => setUsuario(e)} >
-                        <SelectTrigger className="flex flex-row items-center justify-center text-center">
-                            <SelectValue placeholder="Clique aqui" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            {usuarios.map(({ _id, nome }) => (
-                                <SelectItem key={_id} value={_id}>
-                                    {nome}
-                                </SelectItem>
-                            ))}
-
-                        </SelectContent>
-                    </Select>
-
-                </div>
             </div>
 
 

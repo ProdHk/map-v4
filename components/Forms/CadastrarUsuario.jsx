@@ -1,6 +1,5 @@
 "use client"
 
-import { Calendar } from "@/components/ui/calendar"
 
 import { useState } from "react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
@@ -8,8 +7,6 @@ import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import { useRouter } from 'next/navigation'
 import { CadastrarUsuario } from "@/services/usuarios"
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
-import { CalendarIcon } from "@radix-ui/react-icons"
 
 export default function FormCadastrarUsuario() {
 
