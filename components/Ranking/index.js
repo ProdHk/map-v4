@@ -5,6 +5,7 @@ import { DataTable } from "./dataTable"
 import { useEffect, useState } from "react"
 
 
+
 export default function Ranking() {
     const [usuarios, setUsuarios] = useState([])
 

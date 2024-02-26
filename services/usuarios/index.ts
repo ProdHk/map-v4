@@ -88,7 +88,8 @@ export async function LogarUsuario({ email, pass }: any) {
         const userExist = usuarios.filter(({ email }: userTypes) => email === userEmail)
         const access = userExist[0]?.pass === pass
         if (access === true) {
-            return userExist[0]?.roles
+            const user = userExist[0]
+            return user
         } else {
             return false
         }

@@ -1,5 +1,6 @@
 "use client"
 
+import Cookies from 'js-cookie';
 
 import { useEffect, useState } from "react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
@@ -13,7 +14,8 @@ import { BuscarUsuarios } from "@/services/usuarios"
 export default function FormCadastrarIdeia() {
 
     const [usuarios, setUsuarios] = useState([])
-
+    const userIdFromCookie = Cookies.get('userId');
+    console.log(userIdFromCookie)
 
     useEffect(() => {
         async function getUsers() {

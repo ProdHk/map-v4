@@ -6,16 +6,14 @@ import { useState } from "react";
 import { LogarUsuario } from '@/services/usuarios'
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import Cookies from 'js-cookie';
 
 export default function Home() {
   const router = useRouter()
 
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
-
   const [popup, setPopup] = useState(false)
-
-
 
 
   return (
@@ -57,16 +55,27 @@ export default function Home() {
           </div>
           <Button className="w-6/12 " onClick={async () => {
             try {
-              const roles: any = await LogarUsuario({ email, pass })
-              console.log(roles)
-              if (roles === false) {
+              const user: any = await LogarUsuario({ email, pass })
+
+
+              if (user?.roles === false) {
                 setPopup(true)
+
                 setTimeout(() => {
+
                   setPopup(false)
+
                 }, 5000);
                 return
               }
-              roles === "Admin" ?
+              // adicionando o id do usuario em cookie
+
+              Cookies.set('userId', user._id);
+              Cookies.set('userName', user.nome);
+              /* 
+              const userIdFromCookie = Cookies.get('userId'); */
+
+              user.roles === "Admin" ?
                 router.push('/admin')
                 :
                 router.push('/map')
