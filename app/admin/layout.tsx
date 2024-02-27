@@ -1,11 +1,27 @@
-
+"use client"
 import SidebarAdmin from "@/components/Sidebar/SidebarAdmin"
-import Header from "@/components/Header"
+import Cookies from 'js-cookie';
+import { useRouter } from "next/navigation";
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const router = useRouter()
+  const userIdFromCookie = Cookies.get('userId');
+  const userRolesFromCookie = Cookies.get('roles');
+
+  console.log(userIdFromCookie)
+  if (!userIdFromCookie) {
+    return router.push("/")
+  }
+  if (userRolesFromCookie || "Admin") {
+    return router.push("/map")
+
+  }
   return (
     <div className="w-full h-full min-h-screen flex flex-row gap-5 
     bg-gradient-to-tr from-[#380036]  via-[#043a79] to-[#0cba5a]
@@ -18,4 +34,7 @@ export default function RootLayout({
       </div>
     </div>
   );
+
 }
+
+

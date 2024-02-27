@@ -72,6 +72,8 @@ export default function Home() {
 
               Cookies.set('userId', user._id);
               Cookies.set('userName', user.nome);
+              Cookies.set('roles', user.roles);
+
               /* 
               const userIdFromCookie = Cookies.get('userId'); */
 
