@@ -83,10 +83,19 @@ export async function EditarUsuario({
 export async function LogarUsuario({ email, pass }: any) {
     try {
         const userEmail = email
+        const userPass = pass
+
         const usuarios = await BuscarUsuarios()
 
         const userExist = usuarios.filter(({ email }: userTypes) => email === userEmail)
-        const access = userExist[0]?.pass === pass
+
+        if (userExist.length < 1) {
+            console.log(false)
+            return false
+        }
+
+        const access = userExist[0]?.pass === userPass
+
         if (access === true) {
             const user = userExist[0]
             return user
@@ -94,13 +103,6 @@ export async function LogarUsuario({ email, pass }: any) {
             return false
         }
 
-        /* 
-                if (userExist.pass === pass) {
-                    return userExist
-                } else {
-                    let userDontExist
-                    return userDontExist
-                } */
 
 
     } catch (error) {

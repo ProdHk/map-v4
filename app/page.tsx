@@ -58,7 +58,7 @@ export default function Home() {
               const user: any = await LogarUsuario({ email, pass })
 
 
-              if (user?.roles === false) {
+              if (user === false) {
                 setPopup(true)
 
                 setTimeout(() => {
