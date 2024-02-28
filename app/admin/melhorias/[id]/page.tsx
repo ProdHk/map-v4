@@ -36,7 +36,7 @@ export default function Handler() {
 
         getIdeia({ id })
     }, [])
-
+    console.log(ideia)
 
 
     return (
@@ -54,7 +54,7 @@ export default function Handler() {
 
                         <div className="w-full p-3 flex flex-col">
                             <h2 className="text-2xl text-emerald-700 font-semibold text-center">
-                                {ideia?.titulo}
+                                {ideia?.descMelhoria}
                             </h2>
                             <h4 className="text-lg  text-end mr-10 font-semibold p-5">
                                 {usuario ? `${usuario}` : "Não informado"}
@@ -80,19 +80,16 @@ export default function Handler() {
                                     <h4>{ideia ? `${ideia.pontos}` : ""}</h4>
                                 </div>
 
+
                                 <div className="flex flex-row gap-5  items-start justify-start">
-                                    <label className="font-semibold">Envolvidos</label>
-                                    <h4>{ideia?.envolvidos}</h4>
-                                </div>
-                                <div className="flex flex-row gap-5  items-start justify-start">
-                                    <label className="font-semibold">Resumo:</label>
-                                    <h4>{ideia?.breveDesc}</h4>
+                                    <label className="font-semibold">Sugestão:</label>
+                                    <h4>{ideia?.sugestao}</h4>
                                 </div>
                             </div>
                         </div>
                         <div className="w-10/12 p-3 flex flex-col  text-lg  text-start font-sans">
                             <label className="font-semibold">Descrição:</label>
-                            {ideia?.desc}
+                            {ideia?.atitude}
                         </div>
 
 

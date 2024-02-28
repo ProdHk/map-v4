@@ -87,8 +87,8 @@ export function DataTable({ columns, data, usuarios }) {
                             >
 
                                 <Link href={`/admin/melhorias/${row.original._id}`}
-                                    className=" flex flex-row w-full h-16 text-center items-center justify-between p-4">
-                                    <p className="w-4/12 text-center ">{row?.original?.titulo}</p>
+                                    className=" flex flex-row w-full min-h-16 text-center items-center justify-between p-4">
+                                    <p className="w-4/12 text-center ">{row?.original?.descMelhoria}</p>
                                     <p className="w-4/12 text-center">{name?.nome}</p>
                                     <p className="w-4/12 text-center">{row?.original?.dataCadastro}</p>
                                 </Link>

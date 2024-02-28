@@ -18,10 +18,10 @@ export default function RootLayout({
   if (!userIdFromCookie) {
     return router.push("/")
   }
-  if (userRolesFromCookie || "Admin") {
-    return router.push("/map")
-
-  }
+  /*  if (userRolesFromCookie || "Admin") {
+     return router.push("/map")
+ 
+   } */
   return (
     <div className="w-full h-full min-h-screen flex flex-row gap-5 
     bg-gradient-to-tr from-[#380036]  via-[#043a79] to-[#0cba5a]
