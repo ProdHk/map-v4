@@ -1,6 +1,5 @@
 "use client"
 import SidebarAdmin from "@/components/Sidebar/SidebarAdmin"
-import Cookies from 'js-cookie';
 import { useRouter } from "next/navigation";
 
 
@@ -11,13 +10,8 @@ export default function RootLayout({
 }>) {
 
   const router = useRouter()
-  const userIdFromCookie = Cookies.get('userId');
-  const userRolesFromCookie = Cookies.get('roles');
 
-  console.log(userIdFromCookie)
-  if (!userIdFromCookie) {
-    return router.push("/")
-  }
+
   /*  if (userRolesFromCookie || "Admin") {
      return router.push("/map")
  
