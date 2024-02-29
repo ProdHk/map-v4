@@ -25,12 +25,12 @@ export const userMenuItems = [
         path: "/map/resumos",
         icon: <LuAlbum />
     },
-    {
-        id: 4,
-        name: "Config",
-        path: "/map/config",
-        icon: <LuBrainCog />
-    },
+    /*  {
+         id: 4,
+         name: "Config",
+         path: "/map/config",
+         icon: <LuBrainCog />
+     }, */
 ]
 
 
@@ -66,12 +66,12 @@ export const adminMenuItems = [
         path: "/admin/pontuar",
         icon: <LuAward />
     },
-    {
-        id: 5,
-        name: "Usuarios",
-        path: "/admin/usuarios",
-        icon: <LuUserCog />
-    },
+    /*   {
+          id: 5,
+          name: "Usuarios",
+          path: "/admin/usuarios",
+          icon: <LuUserCog />
+      }, */
     /* 
      {
          id: 6,

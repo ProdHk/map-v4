@@ -49,7 +49,7 @@ export default function ListMelhoriasPendentes() {
                                 className=" flex flex-row border rounded-md border-zinc-100 py-2 
                                 hover:bg-slate-100 hover:border-slate-200
                                 transition-all ease-in-out">
-                                <p className="w-4/12 text-center">{username.nome}</p>
+                                <p className="w-4/12 text-center">{username?.nome}</p>
                                 <p className="w-4/12 text-center">{dataCadastro}</p>
                                 <p className="w-4/12 text-center">{descMelhoria}</p>
                             </Link>

@@ -1,11 +1,7 @@
-import Ranking from "@/components/Ranking";
+import AdminHomePage from "@/components/Pages/AdminHomePage";
+
 
 export default function Handler() {
 
-    return (
-        <div className="flex flex-col w-full h-full items-center justify-center text-center">
-
-            <Ranking />
-        </div>
-    )
+    return <AdminHomePage />
 }

@@ -70,13 +70,14 @@ export default function Home() {
               }
               // adicionando o id do usuario em cookie
 
+              user.roles === "Admin" ? Cookies.set('roles', 'Admin') : Cookies.set('roles', 'user');
               Cookies.set('userId', user._id);
               Cookies.set('userName', user.nome);
-              Cookies.set('roles', user.roles);
 
-              /* 
-              const userIdFromCookie = Cookies.get('userId'); */
 
+
+              const userIdFromCookie = Cookies.get('userName');
+              console.log(userIdFromCookie)
               user.roles === "Admin" ?
                 router.push('/admin')
                 :
