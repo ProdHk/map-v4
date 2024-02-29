@@ -12,11 +12,7 @@ export default function AdminHomePage() {
 
 
     return (
-        <>
-            {
-                roles === 'Admin' ? <Ranking /> : router.push("/map")
-            }
-        </>
+        <Ranking />
     )
 
 }

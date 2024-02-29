@@ -1,9 +1,8 @@
-import Ranking from '@/components/Ranking'
+import UserHomePage from '@/components/Pages/UserHomePage'
 export default function Handler() {
 
     return (
-        <div className='w-full h-full flex items-center justify-center'>
-            <Ranking />
-        </div>
+
+        <UserHomePage />
     )
 }

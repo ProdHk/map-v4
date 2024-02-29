@@ -54,7 +54,7 @@ export default function Home() {
             <Input placeholder="Digite aqui" type="password" onChange={(e) => setPass(e.target.value)} />
           </div>
           <Button className="w-6/12 " onClick={async () => {
-            try {
+            /* try {
               const user: any = await LogarUsuario({ email, pass })
 
 
@@ -84,7 +84,7 @@ export default function Home() {
                 router.push('/map')
             } catch (error) {
               console.log("não foi possivel fazer login", error)
-            }
+            } */
           }}> Entrar </Button>
         </div>
       </div>
