@@ -1,15 +1,11 @@
 "use client"
+
+
 import Ranking from "@/components/Ranking";
-import Cookies from 'js-cookie';
-import { useRouter } from "next/navigation";
+/* import Cookies from 'js-cookie'; */
+
 
 export default function UserHomePage() {
-
-
-    const router = useRouter()
-    const roles = Cookies.get("roles")
-    console.log(roles)
-
 
     return (
 
